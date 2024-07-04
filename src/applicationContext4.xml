@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean class="com.spring.BankDetail" id="canera">
+        <constructor-arg name="accountNumber" value="61861*00***30"/>
+        <constructor-arg name="accountType" value="saving"/>
+        <constructor-arg name="bankName" value="Canera Bank"/>
+        <constructor-arg name="ifcCode" value="CNRB0***1*6"/>
+    </bean>
+
+    <bean class="com.spring.BankDetail" id="kotak">
+        <constructor-arg name="accountNumber" value="84466***923"/>
+        <constructor-arg name="accountType" value="saving"/>
+        <constructor-arg name="bankName" value="Kotak Mahindra Bank"/>
+        <constructor-arg name="ifcCode" value="KKBK00**0*2"/>
+    </bean>
+
+    <bean class="com.spring.Account" id="account">
+        <constructor-arg name="id" value="2341"/>
+        <constructor-arg name="password" value="surya**@123"/>
+        <constructor-arg name="username" value="suryakant1534"/>
+        <constructor-arg name="bankDetailList" ref="listOfBank"/>
+    </bean>
+
+    <util:list list-class="java.util.LinkedList" id="listOfBank">
+        <ref bean="canera"/>
+        <ref bean="kotak"/>
+    </util:list>
+
+    <bean class="com.spring.Employee" id="employee">
+        <constructor-arg name="id" value="13123"/>
+        <constructor-arg name="name" value="Surya Kant"/>
+        <constructor-arg name="salary" value="13132"/>
+        <constructor-arg name="account" ref="account"/>
+        <constructor-arg name="nameOfMobile">
+            <list>
+                <value>Vivo</value>
+                <value>Oppo</value>
+                <value>Realme</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean class="com.spring.Company" id="company">
+        <constructor-arg name="address" value="patna, 811104"/>
+        <constructor-arg name="contactInfo" value="+91956030***8"/>
+        <constructor-arg name="name" value="Surya Kant"/>
+        <constructor-arg name="employees" ref="mapOfEmployee"/>
+    </bean>
+
+    <util:map id="mapOfEmployee" map-class="java.util.HashMap">
+        <entry key="13123" value-ref="employee"/>
+    </util:map>
+
+</beans>

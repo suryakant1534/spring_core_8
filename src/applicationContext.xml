@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean class="com.spring.BankDetail" id="canera">
+        <property name="accountNumber" value="61861*00***30"/>
+        <property name="accountType" value="saving"/>
+        <property name="bankName" value="Canera Bank"/>
+        <property name="ifcCode" value="CNRB0***1*6"/>
+    </bean>
+
+    <bean class="com.spring.BankDetail" id="kotak">
+        <property name="accountNumber" value="84466***923"/>
+        <property name="accountType" value="saving"/>
+        <property name="bankName" value="Kotak Mahindra Bank"/>
+        <property name="ifcCode" value="KKBK00**0*2"/>
+    </bean>
+
+    <bean class="com.spring.Account" id="account">
+        <property name="id" value="01221"/>
+        <property name="username" value="suryakant1534"/>
+        <property name="password" value="suryakant***@123"/>
+        <property name="bankDetailList">
+            <list>
+                <ref bean="canera"/>
+                <ref bean="kotak"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.spring.Employee" id="employee">
+        <property name="id" value="1123"/>
+        <property name="account" ref="account"/>
+        <property name="name" value="Surya Kant"/>
+        <property name="salary" value="12342"/>
+        <property name="nameOfMobile" ref="mobList"/>
+    </bean>
+
+    <util:list id="mobList" list-class="java.util.LinkedList">
+        <value>Nokia</value>
+        <value>Samsung</value>
+        <value>OnePlus</value>
+    </util:list>
+
+</beans>
